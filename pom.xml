@@ -12,6 +12,7 @@
     <modules>
         <module>sky-api</module>
         <module>sky-gateway</module>
+        <module>sky-flink</module>
     </modules>
 
     <properties>
