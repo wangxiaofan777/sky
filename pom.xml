@@ -13,17 +13,24 @@
         <module>sky-api</module>
         <module>sky-gateway</module>
         <module>sky-flink</module>
+        <module>sky-user</module>
+        <module>sky-product</module>
+        <module>sky-clients</module>
+        <module>sky-clients/sky-user-client</module>
     </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-boot.version>2.7.18</spring-boot.version>
-        <spring-cloud.version>2021.0.9</spring-cloud.version>
+        <spring-boot.version>2.6.13</spring-boot.version>
+        <spring-cloud.version>2021.0.5</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.0.5.0</spring-cloud-alibaba.version>
         <mysql.version>8.0.30</mysql.version>
         <lombok.version>1.18.30</lombok.version>
         <rocketmq-client-java-version>5.0.7</rocketmq-client-java-version>
+        <protoc.version>3.21.12</protoc.version>
+        <grpc.version>1.54.1</grpc.version>
     </properties>
 
 
@@ -41,6 +48,14 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -70,4 +85,40 @@
         </dependencies>
     </dependencyManagement>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.xolstice.maven.plugins</groupId>
+                <artifactId>protobuf-maven-plugin</artifactId>
+                <version>0.6.1</version>
+                <configuration>
+                    <protocArtifact>com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}
+                    </protocArtifact>
+                    <pluginId>grpc-java</pluginId>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}
+                    </pluginArtifact>
+                    <protocPlugins>
+                        <protocPlugin>
+                            <id>dubbo</id>
+                            <groupId>org.apache.dubbo</groupId>
+                            <artifactId>dubbo-compiler</artifactId>
+                            <version>3.0.10</version>
+                            <mainClass>org.apache.dubbo.gen.tri.Dubbo3TripleGenerator</mainClass>
+                        </protocPlugin>
+                    </protocPlugins>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test-compile</goal>
+                            <goal>compile-custom</goal>
+                            <goal>test-compile-custom</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
 </project>

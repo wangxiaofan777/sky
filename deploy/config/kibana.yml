@@ -1,0 +1,15 @@
+# Default Kibana configuration for docker target
+i18n.locale: zh-CN
+server.host: "0.0.0.0"
+server.shutdownTimeout: "5s"
+elasticsearch.hosts: [ "http://localhost:9200" ]
+monitoring.ui.container.elasticsearch.enabled: true
+
+#此处为新生成的kibana账号和密码
+elasticsearch.username: "kibana"
+elasticsearch.password: "123456"
+
+xpack.monitoring.enabled: true
+xpack.monitoring.elasticsearch.hosts: ["http://localhost:9200"]
+xpack.monitoring.kibana.collection.enabled: true
+xpack.monitoring.kibana.collection.interval: 10000

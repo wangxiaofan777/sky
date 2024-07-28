@@ -1,0 +1,8 @@
+server:
+  servlet:
+    context-path: /products
+  port: 8091
+
+spring:
+  application:
+    name: product-service

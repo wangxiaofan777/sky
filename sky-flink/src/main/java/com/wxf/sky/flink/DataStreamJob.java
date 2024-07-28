@@ -18,6 +18,7 @@
 
 package com.wxf.sky.flink;
 
+import org.apache.flink.contrib.streaming.state.EmbeddedRocksDBStateBackend;
 import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.environment.CheckpointConfig;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -55,7 +56,11 @@ public class DataStreamJob {
 
 		env.getCheckpointConfig().setTolerableCheckpointFailureNumber(1);
 
-//		env.setStateBackend(new EmbeddedRocksDBStateBackend());
+		EmbeddedRocksDBStateBackend rocksDBStateBackend = new EmbeddedRocksDBStateBackend();
+
+		env.setStateBackend(rocksDBStateBackend);
+
+		env.getConfig().setUseSnapshotCompression(true);
 
 		/*
 		 * Here, you can start creating your execution plan for Flink.
