@@ -6,5 +6,8 @@ server:
 spring:
   application:
     name: product-service
-  profiles:
-    active: dev
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8858
+        port: 8719
