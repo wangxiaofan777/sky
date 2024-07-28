@@ -6,5 +6,8 @@ server:
 spring:
   application:
     name: user-service
-  profiles:
-    active: dev
+  cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 127.0.0.1:8858
