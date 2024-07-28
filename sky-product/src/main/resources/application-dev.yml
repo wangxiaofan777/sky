@@ -7,6 +7,18 @@ spring:
   application:
     name: product-service
   cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+        enabled: true
+        register-enabled: true
+        ip-type: IPV4
+        namespace: 4bf80b0c-03ae-4d78-9a9a-7195df8ee4c5
+        cluster-name: sky-cluster
+        group: dev
+
     sentinel:
       transport:
         dashboard: 127.0.0.1:8858

@@ -1,6 +1,5 @@
-package com.wxf.sky.user.feign.clients;
+package com.wxf.sky.user.service;
 
-import com.wxf.sky.user.client.UserClient;
 import com.wxf.sky.user.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,7 @@ import java.util.List;
  **/
 @Slf4j
 @Service
-public class UserClientImpl implements UserClient {
+public class UserServicetImpl implements UserService {
 
     private static final List<User> USER_LIST = Arrays.asList(
             User.builder().id(1L).username("wxf").age(18).remark("hehe").build(),
