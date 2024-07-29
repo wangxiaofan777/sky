@@ -1,4 +1,4 @@
-package com.wxf.sky.user.client;
+package com.wxf.sky.product.client;
 
 import com.wxf.sky.user.model.User;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -15,9 +15,10 @@ import java.util.List;
  **/
 @FeignClient(
         value = "user-service",
-//        url = "http://127.0.0.1:8090/users",
-        path = "/users"
+//        url = "http://127.0.0.1:8090",
+        path = "/users",
 //        fallback = UserClientFallback.class,
+        fallbackFactory = UserClientFallbackFactory.class
 //        configuration = UserClientConfiguration.class
 )
 public interface UserClient {

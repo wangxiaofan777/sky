@@ -1,12 +1,12 @@
-package com.wxf.sky.product.service;
+package com.wxf.sky.product.service.impl;
 
-import com.wxf.sky.user.client.UserClient;
+import com.wxf.sky.product.client.UserClient;
+import com.wxf.sky.product.service.OrderService;
 import com.wxf.sky.user.model.User;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    @Resource
+    @Autowired
     private UserClient userClient;
 
     @Override

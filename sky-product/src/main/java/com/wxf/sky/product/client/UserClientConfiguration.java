@@ -1,4 +1,4 @@
-package com.wxf.sky.user.client;
+package com.wxf.sky.product.client;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
  * @author Wxf
  * @since 2024-07-28 20:27:07
  **/
-//@Configuration
+@Configuration
 public class UserClientConfiguration {
 
     @Bean

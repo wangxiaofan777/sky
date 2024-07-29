@@ -7,6 +7,9 @@ spring:
   application:
     name: product-service
   cloud:
+    loadbalancer:
+      nacos:
+        enabled: true
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
@@ -23,3 +26,8 @@ spring:
       transport:
         dashboard: 127.0.0.1:8858
         port: 8719
+
+
+feign:
+  circuitbreaker:
+    enabled: true
