@@ -26,8 +26,29 @@ spring:
       transport:
         dashboard: 127.0.0.1:8858
         port: 8719
+        heartbeat-interval-ms: 10
+
+
 
 
 feign:
+  sentinel:
+    enabled: true
   circuitbreaker:
     enabled: true
+  client:
+    config:
+      default:
+        read-timeout: 2000
+        connect-timeout: 3000
+        logger-level: basic
+  compression:
+    response:
+      enabled: true
+
+
+
+ribbon:
+  eager-load:
+    clients: user-service
+    enabled: true # 开始饥饿加载，防止第一次调用超时
