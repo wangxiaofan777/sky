@@ -21,6 +21,9 @@ import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.core.TimeValue;
 import org.elasticsearch.search.Scroll;
 import org.elasticsearch.search.SearchHit;
+import org.elasticsearch.search.aggregations.Aggregation;
+import org.elasticsearch.search.aggregations.AggregationBuilder;
+import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,6 +126,29 @@ public class EsTest {
         }
 
 
+    }
+
+
+    @Test
+    void aggTest() throws IOException {
+        SearchRequest searchRequest = new SearchRequest("test4");
+
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.aggregation(AggregationBuilders.max("max_age").field("age"));
+        searchSourceBuilder.aggregation(AggregationBuilders.min("min_age").field("age"));
+        searchSourceBuilder.aggregation(AggregationBuilders.sum("sum_age").field("age"));
+
+        searchRequest.source(searchSourceBuilder);
+
+        SearchResponse searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+
+        Aggregation maxAge = searchResponse.getAggregations().get("max_age");
+        Aggregation minAge = searchResponse.getAggregations().get("min_age");
+        Aggregation sumAge = searchResponse.getAggregations().get("sum_age");
+
+        SearchHit[] searchHits = searchResponse.getHits().getHits();
+
+        System.out.println(searchHits);
     }
 
 }
