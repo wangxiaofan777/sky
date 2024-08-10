@@ -1,0 +1,15 @@
+server:
+  port: 9092
+  servlet:
+    context-path: /es-service
+
+
+spring:
+  application:
+    name: es-service
+  elasticsearch:
+    uris: http://127.0.0.1:9200
+    socket-timeout: 30s
+    connection-timeout: 1s
+#    username:
+#    password:
