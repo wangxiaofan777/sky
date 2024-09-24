@@ -21,6 +21,7 @@
         <module>sky-mongodb</module>
         <module>sky-redisson</module>
         <module>sky-test</module>
+        <module>sky-captcha</module>
     </modules>
 
     <properties>
