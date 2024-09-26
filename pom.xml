@@ -22,6 +22,7 @@
         <module>sky-redisson</module>
         <module>sky-test</module>
         <module>sky-captcha</module>
+        <module>sky-flowable</module>
     </modules>
 
     <properties>
@@ -37,6 +38,9 @@
         <protoc.version>3.21.12</protoc.version>
         <grpc.version>1.54.1</grpc.version>
 <!--        <elasticsearch-java.version>8.15.0</elasticsearch-java.version>-->
+
+        <kaptcha.version>2.3.2</kaptcha.version>
+
     </properties>
 
 
@@ -98,6 +102,12 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>2.0.52</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
             </dependency>
 
         </dependencies>
