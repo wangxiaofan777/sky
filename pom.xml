@@ -23,6 +23,7 @@
         <module>sky-test</module>
         <module>sky-captcha</module>
         <module>sky-flowable</module>
+        <module>sky-id-genetor</module>
     </modules>
 
     <properties>
