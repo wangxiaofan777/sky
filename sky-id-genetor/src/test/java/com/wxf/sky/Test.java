@@ -18,7 +18,7 @@ public class Test {
     void test01() {
         for (int i = 0; i < 1000; i++) {
             long nextId = idGenerator.getNextId();
-            System.out.println(nextId);
+            System.out.println(String.format("%06d", nextId));
         }
     }
 }
